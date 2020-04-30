@@ -1,14 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Formik } from "formik";
-import "./dashboard.css";
 import * as Yup from "yup";
 import { connect } from "react-redux";
+import { 
+  BasicButton,
+  InputBox,
+  InputLabel,
+} from "../styles/elements";
+import styled from "styled-components";
 
-const Dashboard = (props) => {
-  const userData = props.user.user;
+const Form = (props) => {
   return (
-    <div>
       <Formik
         initialValues={{ name: "" }}
         onSubmit={(values, { setSubmitting }) => {
@@ -32,10 +34,10 @@ const Dashboard = (props) => {
             handleReset,
           } = props;
           return (
-            <form onSubmit={handleSubmit}>
-              <label htmlFor="name">
+            <InputGroup onSubmit={handleSubmit}>
+              <InputLabel htmlFor="name">
                 <b>GitHub Name</b>
-              </label>
+              </InputLabel>
               <input
                 id="name"
                 placeholder="Enter your username"
@@ -48,49 +50,45 @@ const Dashboard = (props) => {
               {errors.name && errors.touched && (
                 <div className="input-feedback">{errors.name}</div>
               )}
-              <button
+              <SearchButton type="submit" disabled={isSubmitting}>
+                Submit
+              </SearchButton>
+              <ResetButton
                 type="button"
-                className="outline"
                 onClick={handleReset}
                 disabled={!dirty || isSubmitting}
               >
                 Reset
-              </button>
-              <button type="submit" disabled={isSubmitting}>
-                Submit
-              </button>
-            </form>
+              </ResetButton>
+            </InputGroup>
           );
         }}
       </Formik>
-      {userData && (
-        <div className="output">
-          {JSON.stringify(props.user, null, 2)}
-          <React.Fragment>
-            <li>
-              <div>
-                <p>Name: {userData.login}</p>
-                <p>Bio: {userData.bio}</p>
-                <p>Repos: {userData.public_repos}</p>
-                {userData.repos_url && <Link to="/repo">Display repos</Link>}
-                <p>ReposUrl: {userData.repos_url}</p>
-                <p>Name: {userData.avatar_url}</p>
-                <img src={userData.avatar_url} alt={userData.avatar_url} />
-              </div>
-            </li>
-          </React.Fragment>
-        </div>
-      )}
-    </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-});
+
 
 const mapDispatchToProps = (dispatch) => ({
   loadUserData: (name) => dispatch.user.loadUserData(name),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(null, mapDispatchToProps)(Form);
+
+const SearchButton = styled(BasicButton)`
+  border: solid 0.1rem white;
+  border-radius: 0.1rem 0.1rem;
+  color: #fff;
+  background-color: var(--green);
+`;
+
+const ResetButton = styled(BasicButton)`
+  border: solid 0.1rem white;
+  border-radius: 0.1rem 0.1rem;
+  color: #fff;
+  background-color: var(--red);
+`;
+
+const InputGroup = styled(InputBox)`
+  background-color: var(--grey);
+`;

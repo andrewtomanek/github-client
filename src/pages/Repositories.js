@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import styled from "styled-components";
 import Repository from "../components/Repository";
 import { connect } from "react-redux";
+import {
+  PageLayout,
+  BasicButton,
+  InputBox,
+} from "../styles/elements";
+import styled from "styled-components";
 
 const Repositories = (props) => {
   const [queryString, setQueryString] = useState("");
@@ -40,6 +45,7 @@ const Repositories = (props) => {
             created_at,
             description,
             stargazers_count,
+            ...otherData
           }) => {
             return {
               name,
@@ -48,6 +54,7 @@ const Repositories = (props) => {
               created_at,
               description,
               stargazers_count,
+              otherData
             };
           }
         );
@@ -82,17 +89,17 @@ const Repositories = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <PageLayout>
       <InputGroup>
-        <Input
+        <input
           value={queryString}
           placeholder="filter by queryString"
           onChange={handleFilter}
-        ></Input>
+        ></input>
         <Button onClick={getRepos}> reset</Button>
         <div className="checkbox">
           <label>
-            <input
+            <InputCheckBox
               type="checkbox"
               value={isChecked}
               onChange={toggleCheckboxChange}
@@ -103,14 +110,15 @@ const Repositories = (props) => {
         </div>
       </InputGroup>
       {reposArray.length > 0 && (
-        <RepoStyle>
+        <RepoList>
           {reposArray.map((repo) => (
             <Repository key={repo.name} repo={repo} />
           ))}
-        </RepoStyle>
+        </RepoList>
       )}
       {reposArray.length === 0 && <div>{errorMessage}</div>}
-    </React.Fragment>
+    </    PageLayout>
+
   );
 };
 
@@ -120,38 +128,34 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps)(Repositories);
 
-const RepoStyle = styled.ul`
-  list-style-type: none;
+const RepoList = styled.ul`
+ display: grid;
+ grid-gap: 1rem;
+  grid-auto-flow: row;
+  justify-items: center;
+  align-items: center;
   margin: 0;
-  padding: 20px;
-
-  > li {
-    padding: 10px 0;
-  }
-
-  > li + li {
-    border-top: 1px solid #ddd;
-  }
+  padding: 0;
+  overflow: hidden;
 `;
 
-const InputGroup = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+const Button = styled(BasicButton)`
+  border: solid 0.1rem white;
+  border-radius: 0.1rem 0.1rem;
+  color: #fff;
+  background-color: var(--green);
 `;
 
-const Input = styled.input`
-  width: 70%;
-  height: 34px;
-  padding: 10px 10px;
-  box-sizing: border-box;
-`;
-
-const Button = styled.button`
+export const InputCheckBox = styled.input`
+  margin: 0;
+  padding: 0.1rem 0.3rem;
   font-size: 1rem;
-  background-color: #87bdd8;
-  padding: 2px 10px;
-  font-weight: 400;
-  height: 34px;
-  border: 1px solid #87bdd8;
+  font-weight: 600;
+  color: hsla(70, 30%, 30%, 1);
+  background-color: #fff;
+  width: 50%;
+`;
+
+const InputGroup = styled(InputBox)`
+  background-color: var(--grey);
 `;

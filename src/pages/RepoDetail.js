@@ -3,6 +3,12 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { connect } from "react-redux";
 import RepoCard from "../components/RepoCard";
+import {
+  PageLayout
+} from "../styles/elements";
+import { 
+  Link
+} from "react-router-dom";
 
 const RepoDetail = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -33,9 +39,10 @@ const RepoDetail = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <PageLayout>
+              <Link to={`/`}>New search</Link>}
       <RepoCard repo={repoData} />
-    </React.Fragment>
+    </PageLayout>
   );
 };
 

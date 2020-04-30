@@ -1,7 +1,13 @@
 import React from "react";
+import styled from "styled-components";
 import { 
   Link
 } from "react-router-dom";
+import {
+  CardContainer,
+  TextContainer,
+  BasicText
+} from "../styles/elements";
 
 const Repository = ({
   repo: {
@@ -11,23 +17,27 @@ const Repository = ({
     created_at,
     description,
     stargazers_count,
+    otherData
 },
-...otherData
 }) => {
-
+  console.log( JSON.stringify(otherData, null, 2));
   return (
-    <React.Fragment>
-      <li>
-        <div>Name: {name}</div>
-        {language && <div>Language: {language}</div>}
-        {html_url && <div>HTML_Url: {html_url}</div>}
-        {created_at && <div>Created At: {created_at}</div>}
-        {description && <div>Description: {description}</div>}
-        {stargazers_count && <div>stargazers_count: {stargazers_count}</div>}
-      </li>
-      <p>{JSON.stringify(otherData, null, 2)}</p>
-      {html_url &&   <Link to={`/detail/${name}`}>Display repo</Link>}    
-    </React.Fragment>
+    <CardContainer>        
+      {html_url &&   <Link to={`/detail/${name}`}>Display detail of {name}</Link>}    
+    <TextContainer>
+        <BasicText>Name: {name}</BasicText>
+        {language && <BasicText>Language: {language}</BasicText>}
+        {html_url && <BasicText>HTML_Url: {html_url}</BasicText>}
+        {created_at && <BasicText>Created At: {created_at}</BasicText>}
+        {description && <BasicText>Description: {description}</BasicText>}
+        {stargazers_count && <BasicText>stargazers_count: {stargazers_count}</BasicText>}
+        {otherData && <BasicText>clone_url: {otherData.clone_url}</BasicText>}
+        {otherData && <BasicText>updated: {otherData.updated_at}</BasicText>}
+        {otherData && <BasicText>size: {otherData.size}</BasicText>}
+        {otherData && <BasicText>watchers: {otherData.watchers}</BasicText>}
+    </TextContainer>
+    </CardContainer>          
+
   );
 };
 export default Repository;
