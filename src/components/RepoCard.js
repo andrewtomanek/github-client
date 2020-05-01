@@ -12,7 +12,6 @@ const RepoCard = ({
     ...otherData
   },
 }) => {
-  console.log(JSON.stringify(otherData, null, 2));
   return (
     <TextContainer>
       {name && <BasicHeading>{name}</BasicHeading>}

@@ -25,10 +25,8 @@ const RepoDetail = (props) => {
       .then((responses) => {
         const repo = responses.data;
         setRepoData(repo);
-        console.log(JSON.stringify(repo, null, 2));
       })
       .catch((error) => {
-        console.log(`inside getrepos error: ${error}`);
         setErrorMessage(error.response.statusText);
       });
   };

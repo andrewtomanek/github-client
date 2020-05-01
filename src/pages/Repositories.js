@@ -62,7 +62,6 @@ const Repositories = (props) => {
         setReposArray(repos);
       })
       .catch((error) => {
-        console.log(`inside getrepos error: ${error}`);
         setErrorMessage(error.response.statusText);
       });
   };
