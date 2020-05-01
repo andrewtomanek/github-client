@@ -1,5 +1,5 @@
 import React from "react";
-import { TextContainer, BasicText, StyledLink } from "../styles/elements";
+import { TextContainer,BasicHeading, BasicText, StyledLink } from "../styles/elements";
 
 const RepoCard = ({
   repo: {
@@ -13,19 +13,27 @@ const RepoCard = ({
   },
 }) => {
   console.log(JSON.stringify(otherData, null, 2));
-
   return (
     <TextContainer>
-      {name && <BasicText>Name: {name}</BasicText>}
+      {name && <BasicHeading>{name}</BasicHeading>}
       {language && <BasicText>Language: {language}</BasicText>}
-      {created_at && <BasicText>Created At: {created_at}</BasicText>}
       {description && <BasicText>Description: {description}</BasicText>}
+      {created_at && <BasicText>Created At: {created_at}</BasicText>}
       {stargazers_count && (
         <BasicText>stargazers_count: {stargazers_count}</BasicText>
       )}
+              {otherData && (
+          <>
+            {" "}
+            <BasicText>clone_url: {otherData.clone_url}</BasicText>
+            <BasicText>updated: {otherData.updated_at}</BasicText>
+            <BasicText>size: {otherData.size}</BasicText>
+            <BasicText>watchers: {otherData.watchers}</BasicText>
+          </>
+        )}
       {html_url && (
         <a href={`${html_url}`}>
-          <BasicText>Open on github</BasicText>
+          <BasicHeading>Open on github</BasicHeading>
         </a>
       )}
       <StyledLink to={`/`}>New search</StyledLink>

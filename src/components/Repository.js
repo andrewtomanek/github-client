@@ -18,7 +18,6 @@ const Repository = ({
     otherData,
   },
 }) => {
-  console.log(JSON.stringify(otherData, null, 2));
   return (
     <CardContainer>
       {name && <BasicHeading>{name}</BasicHeading>}

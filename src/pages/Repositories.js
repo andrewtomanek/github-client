@@ -82,7 +82,7 @@ const Repositories = (props) => {
     sortedHighStars.sort((a, b) =>
       a.stargazers_count < b.stargazers_count ? 1 : -1
     );
-    if (isChecked) {
+    if (!isChecked) {
       setReposArray(sortedHighStars);
     } else {
       setReposArray(sortedLowStars);
@@ -94,20 +94,16 @@ const Repositories = (props) => {
       <InputGroup>
         <input
           value={queryString}
-          placeholder="filter by queryString"
+          placeholder="Filter by name"
           onChange={handleFilter}
         />
         <Button onClick={filterRepos}>Filter repos</Button>
-        <div className="checkbox">
-          <label>
-            <BasicHeading>Sort by Stargazers count</BasicHeading>
-            <InputCheckBox
-              type="checkbox"
-              value={isChecked}
-              onChange={toggleCheckboxChange}
-            />
-          </label>
-        </div>
+        <BasicHeading>Sort by Stargazers count</BasicHeading>
+        <InputCheckBox
+          type="checkbox"
+          value={isChecked}
+          onChange={toggleCheckboxChange}
+        />
         <Button onClick={getRepos}> reset</Button>
       </InputGroup>
       {reposArray.length > 0 && (

@@ -15,7 +15,7 @@ class App extends Component {
         <BrowserRouter>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/repo" component={Repositories} />
+            <Route path="/repos" component={Repositories} />
             <Route path="/detail/:repoName" component={RepoDetail} />
             <Route component={NotFound} />
           </Switch>

@@ -12,14 +12,13 @@ import {
 
 const Home = (props) => {
   const userData = props.user.user;
-  console.log(JSON.stringify(props.user, null, 2));
   return (
     <PageLayout>
       <Form />
       {userData && (
         <CardContainer>
           {userData.repos_url && (
-            <StyledLink to="/repo">Display repos</StyledLink>
+            <StyledLink to="/repos">Display repos</StyledLink>
           )}
           <img src={userData.avatar_url} alt={userData.avatar_url} />
           <TextContainer>

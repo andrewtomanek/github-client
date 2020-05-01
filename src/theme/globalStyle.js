@@ -39,13 +39,8 @@ input:focus {
     box-shadow: inset 0 1px 2px rgba(27,31,35,.075), 0 0 0 0.1em rgba(3,102,214,.3);
 }
 
-.input-feedback {
-    color: red;
-    margin-top: .25rem;
-}
-
 input.error {
-    border-color: red;
+    border-color: var(--red);
 }
 
 input[type="checkbox"] {  margin: 0;
@@ -55,10 +50,6 @@ input[type="checkbox"] {  margin: 0;
   background-color: var(--grey);
   color: var(--green);
   width: 50%;}
-
-.item-enter {
-  opacity: 0;
-}
 
 `;
 export default GlobalStyle;
