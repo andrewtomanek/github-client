@@ -2,8 +2,9 @@ import React from "react";
 import {
   CardContainer,
   TextContainer,
+  BasicHeading,
   BasicText,
-  StyledLink
+  StyledLink,
 } from "../styles/elements";
 
 const Repository = ({
@@ -14,27 +15,35 @@ const Repository = ({
     created_at,
     description,
     stargazers_count,
-    otherData
-},
+    otherData,
+  },
 }) => {
-  console.log( JSON.stringify(otherData, null, 2));
+  console.log(JSON.stringify(otherData, null, 2));
   return (
-    <CardContainer>        
-      {name &&   <StyledLink to={`/detail/${name}`}>Display detail of {name}</StyledLink>}    
-    <TextContainer>
-        <BasicText>Name: {name}</BasicText>
+    <CardContainer>
+      {name && <BasicHeading>{name}</BasicHeading>}
+      <TextContainer>
         {language && <BasicText>Language: {language}</BasicText>}
         {html_url && <BasicText>HTML_Url: {html_url}</BasicText>}
         {created_at && <BasicText>Created At: {created_at}</BasicText>}
         {description && <BasicText>Description: {description}</BasicText>}
-        {stargazers_count && <BasicText>stargazers_count: {stargazers_count}</BasicText>}
-        {otherData && <BasicText>clone_url: {otherData.clone_url}</BasicText>}
-        {otherData && <BasicText>updated: {otherData.updated_at}</BasicText>}
-        {otherData && <BasicText>size: {otherData.size}</BasicText>}
-        {otherData && <BasicText>watchers: {otherData.watchers}</BasicText>}
-    </TextContainer>
-    </CardContainer>          
-
+        {stargazers_count && (
+          <BasicText>stargazers_count: {stargazers_count}</BasicText>
+        )}
+        {otherData && (
+          <>
+            {" "}
+            <BasicText>clone_url: {otherData.clone_url}</BasicText>
+            <BasicText>updated: {otherData.updated_at}</BasicText>
+            <BasicText>size: {otherData.size}</BasicText>
+            <BasicText>watchers: {otherData.watchers}</BasicText>
+          </>
+        )}
+      </TextContainer>
+      {name && (
+        <StyledLink to={`/detail/${name}`}>Display detail of {name}</StyledLink>
+      )}
+    </CardContainer>
   );
 };
 export default Repository;

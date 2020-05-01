@@ -3,12 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router";
 import { connect } from "react-redux";
 import RepoCard from "../components/RepoCard";
-import {
-  PageLayout
-} from "../styles/elements";
-import { 
-  Link
-} from "react-router-dom";
+import { PageLayout } from "../styles/elements";
+import { Link } from "react-router-dom";
 
 const RepoDetail = (props) => {
   const [errorMessage, setErrorMessage] = useState("");

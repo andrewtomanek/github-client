@@ -22,7 +22,7 @@ export const BasicButton = styled.button`
   vertical-align: middle;
   cursor: pointer;
   border: 0.3rem solid rgba(27, 31, 35, 0.2);
-  border-radius:  0.3rem;
+  border-radius: 0.3rem;
 `;
 
 export const StyledLink = styled(Link)`
@@ -32,7 +32,7 @@ export const StyledLink = styled(Link)`
   font-size: 1.1rem;
   padding: 0.1rem 0.5rem;
   margin: 0rem;
-  text-align: centerd;
+  text-align: center;
   text-decoration: none;
   border-radius: 0.5rem;
 `;
@@ -43,7 +43,7 @@ export const InputBox = styled.form`
   align-items: center;
   align-content: space-around;
   justify-content: center;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
   padding: 1rem 0.5rem;
 `;
 
@@ -66,32 +66,43 @@ export const InputLabel = styled.label`
   color: #fff;
 `;
 
-
 export const CardContainer = styled.div`
-display: grid;
-grid-auto-flow: row;
-grid-gap: 1rem;
-align-items: center;
-justify-items: center;
-margin: 0;
-padding: 1rem;
-overflow: hidden;
-background-color: hsla(0, 0%, 70%, 1);
-border-radius: 0.5rem;
-width:90%;
+  display: grid;
+  grid-auto-flow: row;
+  grid-gap: 1rem;
+  align-items: center;
+  justify-items: center;
+  margin: 0;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: hsla(0, 0%, 70%, 1);
+  border-radius: 0.5rem;
+  width: 90%;
 `;
 
-export const TextContainer = styled.li`
+export const TextContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
   align-items: center;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  width:90%;
+  width: 90%;
   border-radius: 0.5rem;
   background-color: hsla(0, 0%, 75%, 1);
-  `;
+`;
+
+export const BasicHeading = styled.h3`
+  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 0.3rem;
+  background-color: var(--blue);
+  color: var(--dark);
+
+`;
 
 export const BasicText = styled.p`
   margin: 0;

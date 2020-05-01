@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import {
   PageLayout,
   BasicButton,
-  BasicText
+  BasicHeading,
+  BasicText,
 } from "../styles/elements";
 import styled from "styled-components";
 
@@ -54,7 +55,7 @@ const Repositories = (props) => {
               created_at,
               description,
               stargazers_count,
-              otherData
+              otherData,
             };
           }
         );
@@ -96,16 +97,15 @@ const Repositories = (props) => {
           placeholder="filter by queryString"
           onChange={handleFilter}
         />
-            <Button onClick={filterRepos}> filter repos</Button>
+        <Button onClick={filterRepos}>Filter repos</Button>
         <div className="checkbox">
           <label>
-          <BasicText>Sort by Stargazers count</BasicText>
+            <BasicHeading>Sort by Stargazers count</BasicHeading>
             <InputCheckBox
               type="checkbox"
               value={isChecked}
               onChange={toggleCheckboxChange}
             />
-
           </label>
         </div>
         <Button onClick={getRepos}> reset</Button>
@@ -118,8 +118,7 @@ const Repositories = (props) => {
         </RepoList>
       )}
       {reposArray.length === 0 && <div>{errorMessage}</div>}
-    </    PageLayout>
-
+    </PageLayout>
   );
 };
 
@@ -130,8 +129,8 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps)(Repositories);
 
 const RepoList = styled.ul`
- display: grid;
- grid-gap: 1rem;
+  display: grid;
+  grid-gap: 1rem;
   grid-auto-flow: row;
   justify-items: center;
   align-items: center;
