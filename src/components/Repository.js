@@ -1,12 +1,9 @@
 import React from "react";
-import styled from "styled-components";
-import { 
-  Link
-} from "react-router-dom";
 import {
   CardContainer,
   TextContainer,
-  BasicText
+  BasicText,
+  StyledLink
 } from "../styles/elements";
 
 const Repository = ({
@@ -23,7 +20,7 @@ const Repository = ({
   console.log( JSON.stringify(otherData, null, 2));
   return (
     <CardContainer>        
-      {html_url &&   <Link to={`/detail/${name}`}>Display detail of {name}</Link>}    
+      {name &&   <StyledLink to={`/detail/${name}`}>Display detail of {name}</StyledLink>}    
     <TextContainer>
         <BasicText>Name: {name}</BasicText>
         {language && <BasicText>Language: {language}</BasicText>}

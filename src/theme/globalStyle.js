@@ -2,8 +2,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 :root {
   --green: hsla(110, 50%, 50%, 1);
-  --orange: hsla(24, 90%, 80%, 1);
-  --yellow: hsla(54, 90%, 80%, 1);
+  --blue: hsla(220, 90%, 80%, 1);
   --red: hsla(0, 60%, 50%, 1);
   --dark: hsla(220,30%,30%,1);
   --grey: hsla(0,0%,65%,1);
@@ -27,28 +26,17 @@ button {
 font-family: 'Alegreya Sans',monospace;}
 
 input {
-    font-size: 1rem;
-    text-rendering: auto;
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    display: inline-block;
-    text-align: start;
-    background-color: rgb(255, 255, 255);
+  color:var(--dark);
+    font-size: 1.2rem;
     margin: 0rem;
-    border-width: 0.3rem;
-    border-style: inset;
-    border-color:  rgb(195, 195, 195));
-    border-image: initial;
+    border: 0.3rem solid var(--dark);
+    border-radius: 0.3rem;
 }
 
 input:focus {
-    border-color: var(--green);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
-    0 0 0 3px rgba(0, 126, 255, 0.1);
+  border: 0.3rem solid var(--blue);
     outline: none;
+    box-shadow: inset 0 1px 2px rgba(27,31,35,.075), 0 0 0 0.1em rgba(3,102,214,.3);
 }
 
 .input-feedback {
@@ -59,6 +47,14 @@ input:focus {
 input.error {
     border-color: red;
 }
+
+input[type="checkbox"] {  margin: 0;
+  padding: 0.1rem 0.3rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--grey);
+  color: var(--green);
+  width: 50%;}
 
 .item-enter {
   opacity: 0;

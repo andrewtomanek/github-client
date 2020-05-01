@@ -1,7 +1,8 @@
 import React from "react";
 import {
   TextContainer,
-  BasicText
+  BasicText,
+  StyledLink
 } from "../styles/elements";
 
 const RepoCard = ({
@@ -13,10 +14,11 @@ const RepoCard = ({
     <TextContainer>
         {name &&<BasicText>Name: {name}</BasicText>}
         {language && <BasicText>Language: {language}</BasicText>}
-        {html_url && <BasicText>HTML_Url: {html_url}</BasicText>}
         {created_at && <BasicText>Created At: {created_at}</BasicText>}
         {description && <BasicText>Description: {description}</BasicText>}
         {stargazers_count && <BasicText>stargazers_count: {stargazers_count}</BasicText>}
+        {html_url && <a href={`${html_url}`}><BasicText>Open on github</BasicText></a>}
+        <StyledLink to={`/`}>New search</StyledLink>
     </TextContainer>
   );
 };

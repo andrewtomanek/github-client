@@ -40,7 +40,6 @@ const RepoDetail = (props) => {
 
   return (
     <PageLayout>
-              <Link to={`/`}>New search</Link>}
       <RepoCard repo={repoData} />
     </PageLayout>
   );

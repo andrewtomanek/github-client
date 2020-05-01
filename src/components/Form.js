@@ -6,6 +6,7 @@ import {
   BasicButton,
   InputBox,
   InputLabel,
+  BasicText
 } from "../styles/elements";
 import styled from "styled-components";
 
@@ -18,7 +19,7 @@ const Form = (props) => {
           setSubmitting(false);
         }}
         validationSchema={Yup.object().shape({
-          name: Yup.string().required("Required"),
+          name: Yup.string().required("Alphanumeric characters required").matches(/^[0-9a-zA-Z]+$/, "Please input alphanumeric characters only"),
         })}
       >
         {(props) => {
@@ -36,21 +37,20 @@ const Form = (props) => {
           return (
             <InputGroup onSubmit={handleSubmit}>
               <InputLabel htmlFor="name">
-                <b>GitHub Name</b>
+                <BasicText>Search GitHub Name</BasicText>
               </InputLabel>
               <input
                 id="name"
-                placeholder="Enter your username"
+                placeholder="Enter username"
                 type="text"
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className={errors.name && touched.name ? "error" : ""}
               />
-              {errors.name && errors.touched && (
-                <div className="input-feedback">{errors.name}</div>
-              )}
-              <SearchButton type="submit" disabled={isSubmitting}>
+                              <ErrorText> {errors.name ? errors.name  : "\u{2714}"  }         
+              </ErrorText>                
+                           <SearchButton type="submit" disabled={isSubmitting}>
                 Submit
               </SearchButton>
               <ResetButton
@@ -77,18 +77,26 @@ export default connect(null, mapDispatchToProps)(Form);
 
 const SearchButton = styled(BasicButton)`
   border: solid 0.1rem white;
-  border-radius: 0.1rem 0.1rem;
+  border-radius: 0.3rem;
   color: #fff;
   background-color: var(--green);
 `;
 
 const ResetButton = styled(BasicButton)`
   border: solid 0.1rem white;
-  border-radius: 0.1rem 0.1rem;
+  border-radius: 0.3rem;
   color: #fff;
   background-color: var(--red);
-`;
+  `;
+  
+  const ErrorText = styled(BasicText)`
+  text-align: center;
+    color: var(--red);
+    height: 100%;
+  `;
 
 const InputGroup = styled(InputBox)`
   background-color: var(--grey);
+  justify-items: center;
+  min-width: 40vw;
 `;

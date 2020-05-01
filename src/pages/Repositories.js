@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {
   PageLayout,
   BasicButton,
-  InputBox,
+  BasicText
 } from "../styles/elements";
 import styled from "styled-components";
 
@@ -95,19 +95,20 @@ const Repositories = (props) => {
           value={queryString}
           placeholder="filter by queryString"
           onChange={handleFilter}
-        ></input>
-        <Button onClick={getRepos}> reset</Button>
+        />
+            <Button onClick={filterRepos}> filter repos</Button>
         <div className="checkbox">
           <label>
+          <BasicText>Sort by Stargazers count</BasicText>
             <InputCheckBox
               type="checkbox"
               value={isChecked}
               onChange={toggleCheckboxChange}
             />
 
-            <Button onClick={filterRepos}> filter repos</Button>
           </label>
         </div>
+        <Button onClick={getRepos}> reset</Button>
       </InputGroup>
       {reposArray.length > 0 && (
         <RepoList>
@@ -140,22 +141,40 @@ const RepoList = styled.ul`
 `;
 
 const Button = styled(BasicButton)`
-  border: solid 0.1rem white;
-  border-radius: 0.1rem 0.1rem;
+  border: solid 0.3rem white;
+  border-radius: 0.3rem;
   color: #fff;
   background-color: var(--green);
 `;
 
-export const InputCheckBox = styled.input`
+const InputGroup = styled.section`
+  display: grid;
+  grid-auto-flow: row;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  grid-gap: 2rem;
+  padding: 1rem 0.5rem;
+  background-color: var(--grey);
+`;
+
+const CheckBoxGroup = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  grid-gap: 2rem;
+  padding: 1rem 0.5rem;
+  background-color: var(--grey);
+`;
+
+const InputCheckBox = styled.input`
   margin: 0;
   padding: 0.1rem 0.3rem;
   font-size: 1rem;
   font-weight: 600;
-  color: hsla(70, 30%, 30%, 1);
-  background-color: #fff;
-  width: 50%;
-`;
-
-const InputGroup = styled(InputBox)`
   background-color: var(--grey);
+  color: var(--green);
+  width: 50%;
 `;

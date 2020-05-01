@@ -15,17 +15,14 @@ export const PageLayout = styled.div`
 
 export const BasicButton = styled.button`
   position: relative;
-  display: inline-block;
   padding: 0.3rem;
   font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
   vertical-align: middle;
   cursor: pointer;
-  user-select: none;
   border: 0.3rem solid rgba(27, 31, 35, 0.2);
-  border-radius: 0.25em;
-  appearance: none;
+  border-radius:  0.3rem;
 `;
 
 export const StyledLink = styled(Link)`
