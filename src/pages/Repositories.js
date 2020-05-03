@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Repository from "../components/Repository";
 import { connect } from "react-redux";
-import {
-  PageLayout,
-  BasicButton,
-  BasicHeading,
-  BasicText,
-} from "../styles/elements";
+import { PageLayout, BasicButton, BasicHeading } from "../styles/elements";
 import styled from "styled-components";
 
 const Repositories = (props) => {
@@ -33,37 +28,37 @@ const Repositories = (props) => {
     setQueryString(event.target.value);
   };
 
-  const getRepos = (e) => {
+  const getRepos = async () => {
     const repoUrl = `${props.user.user.repos_url}`;
-    axios
-      .get(repoUrl)
-      .then((responses) => {
-        const repos = responses.data.map(
-          ({
+
+    try {
+      let reposDataResponse = await axios.get(repoUrl);
+      let reposData = reposDataResponse.data;
+      const repos = reposData.map(
+        ({
+          name,
+          language,
+          html_url,
+          created_at,
+          description,
+          stargazers_count,
+          ...otherData
+        }) => {
+          return {
             name,
             language,
             html_url,
             created_at,
             description,
             stargazers_count,
-            ...otherData
-          }) => {
-            return {
-              name,
-              language,
-              html_url,
-              created_at,
-              description,
-              stargazers_count,
-              otherData,
-            };
-          }
-        );
-        setReposArray(repos);
-      })
-      .catch((error) => {
-        setErrorMessage(error.response.statusText);
-      });
+            otherData,
+          };
+        }
+      );
+      setReposArray(repos);
+    } catch (error) {
+      setErrorMessage(error.response.statusText);
+    }
   };
 
   const filterRepos = () => {

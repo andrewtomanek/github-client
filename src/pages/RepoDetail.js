@@ -18,17 +18,16 @@ const RepoDetail = (props) => {
     }
   }, []);
 
-  const getRepo = (e) => {
+  const getRepo = async () => {
     const repoUrl = `https://api.github.com/repos/${props.user.user.login}/${repoName}`;
-    axios
-      .get(repoUrl)
-      .then((responses) => {
-        const repo = responses.data;
-        setRepoData(repo);
-      })
-      .catch((error) => {
-        setErrorMessage(error.response.statusText);
-      });
+
+    try {
+      let repoDataResponse = await axios.get(repoUrl);
+      let repoDetail = repoDataResponse.data;
+      setRepoData(repoDetail);
+    } catch (error) {
+      setErrorMessage(error.response.statusText);
+    }
   };
 
   return (

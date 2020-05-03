@@ -15,8 +15,12 @@ export const user = {
   },
   effects: (dispatch) => ({
     async loadUserData(name) {
-      const response = await axios.get(`${baseUrl}/${name}`);
-      dispatch.user.loadData(response.data);
+      try {
+        const response = await axios.get(`${baseUrl}/${name}`);
+        dispatch.user.loadData(response.data);
+      } catch (error) {
+       console.log(error)
+      }
     },
   }),
 };

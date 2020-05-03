@@ -1,5 +1,10 @@
 import React from "react";
-import { TextContainer,BasicHeading, BasicText, StyledLink } from "../styles/elements";
+import {
+  TextContainer,
+  BasicHeading,
+  BasicText,
+  StyledLink,
+} from "../styles/elements";
 
 const RepoCard = ({
   repo: {
@@ -21,15 +26,14 @@ const RepoCard = ({
       {stargazers_count && (
         <BasicText>stargazers_count: {stargazers_count}</BasicText>
       )}
-              {otherData && (
-          <>
-            {" "}
-            <BasicText>clone_url: {otherData.clone_url}</BasicText>
-            <BasicText>updated: {otherData.updated_at}</BasicText>
-            <BasicText>size: {otherData.size}</BasicText>
-            <BasicText>watchers: {otherData.watchers}</BasicText>
-          </>
-        )}
+      {otherData && (
+        <>
+          <BasicText>clone_url: {otherData.clone_url}</BasicText>
+          <BasicText>updated: {otherData.updated_at}</BasicText>
+          <BasicText>size: {otherData.size}</BasicText>
+          <BasicText>watchers: {otherData.watchers}</BasicText>
+        </>
+      )}
       {html_url && (
         <a href={`${html_url}`}>
           <BasicHeading>Open on github</BasicHeading>
