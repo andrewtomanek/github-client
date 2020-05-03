@@ -18,14 +18,13 @@ Search users from github-API<br /> Display user details<br /> Display user repos
 ## Technologies
 
 - [React.js](https://reactjs.org)
-- [Redux.js](https://redux.js.org)
 - [React-Router](https://reacttraining.com/react-router/)
+- [Redux.js](https://redux.js.org)
 - [Rematch](https://github.com/rematch/rematch)
 - [Formik](https://github.com/jaredpalmer/formik)
 - [Yup](https://github.com/jquense/yup)
 - [styled-components](https://styled-components.com/)
 - [Axios](https://github.com/axios/axios)
-- [Firebase](https://firebase.google.com)
 
 ## Setup
 
