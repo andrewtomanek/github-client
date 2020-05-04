@@ -22,8 +22,8 @@ const RepoDetail = (props) => {
     const repoUrl = `https://api.github.com/repos/${props.user.user.login}/${repoName}`;
 
     try {
-      let repoDataResponse = await axios.get(repoUrl);
-      let repoDetail = repoDataResponse.data;
+      const repoDataResponse = await axios.get(repoUrl);
+      const repoDetail = repoDataResponse.data;
       setRepoData(repoDetail);
     } catch (error) {
       setErrorMessage(error.response.statusText);

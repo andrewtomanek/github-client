@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Repository from "../components/Repository";
 import { connect } from "react-redux";
-import { PageLayout, BasicButton, BasicHeading } from "../styles/elements";
+import {
+  PageLayout,
+  StyledLink,
+  BasicButton,
+  BasicHeading,
+} from "../styles/elements";
 import styled from "styled-components";
 
 const Repositories = (props) => {
@@ -32,8 +37,8 @@ const Repositories = (props) => {
     const repoUrl = `${props.user.user.repos_url}`;
 
     try {
-      let reposDataResponse = await axios.get(repoUrl);
-      let reposData = reposDataResponse.data;
+      const reposDataResponse = await axios.get(repoUrl);
+      const reposData = reposDataResponse.data;
       const repos = reposData.map(
         ({
           name,
@@ -92,13 +97,14 @@ const Repositories = (props) => {
           onChange={handleFilter}
         />
         <Button onClick={filterRepos}>Filter repos</Button>
+        <Button onClick={getRepos}>Reset filter</Button>
         <BasicHeading>Sort by Stargazers count</BasicHeading>
         <InputCheckBox
           type="checkbox"
           value={isChecked}
           onChange={toggleCheckboxChange}
         />
-        <Button onClick={getRepos}> reset</Button>
+        <StyledLink to={`/`}>New search</StyledLink>
       </InputGroup>
       {reposArray.length > 0 && (
         <RepoList>
@@ -108,6 +114,7 @@ const Repositories = (props) => {
         </RepoList>
       )}
       {reposArray.length === 0 && <div>{errorMessage}</div>}
+      <StyledLink to={`/`}>New search</StyledLink>
     </PageLayout>
   );
 };
