@@ -103,7 +103,9 @@ const Repositories = (props) => {
         </RepoList>
       )}
       {reposArray.length === 0 && <div>{errorMessage}</div>}
-      <StyledLink to={`/`}>New search</StyledLink>
+      {reposArray.length === 0 && !errorMessage && (
+        <BasicHeading>No results found</BasicHeading>
+      )}
     </PageLayout>
   );
 };
@@ -131,7 +133,7 @@ const InputGroup = styled.section`
   align-items: center;
   align-content: space-around;
   justify-content: center;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
   padding: 1rem 0.5rem;
   background-color: var(--grey);
 `;
