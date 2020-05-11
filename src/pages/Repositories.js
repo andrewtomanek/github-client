@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Repository from "../components/Repository";
+import FilterForm from "../components/FilterForm";
 import { connect } from "react-redux";
-import {
-  PageLayout,
-  StyledLink,
-  BasicButton,
-  BasicHeading,
-} from "../styles/elements";
+import { PageLayout, StyledLink, BasicHeading } from "../styles/elements";
 import styled from "styled-components";
 
 const Repositories = (props) => {
-  const [queryString, setQueryString] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [reposArray, setReposArray] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
@@ -29,8 +24,8 @@ const Repositories = (props) => {
     displayRepos();
   };
 
-  const handleFilter = (event) => {
-    setQueryString(event.target.value);
+  const filterByQuery = (queryObject) => {
+    filterRepos(queryObject.name);
   };
 
   const getRepos = async () => {
@@ -66,7 +61,7 @@ const Repositories = (props) => {
     }
   };
 
-  const filterRepos = () => {
+  const filterRepos = (queryString) => {
     let filteredRepos;
     filteredRepos = reposArray.filter((a) => a.name === queryString);
     setReposArray(filteredRepos);
@@ -91,13 +86,7 @@ const Repositories = (props) => {
   return (
     <PageLayout>
       <InputGroup>
-        <input
-          value={queryString}
-          placeholder="Filter by name"
-          onChange={handleFilter}
-        />
-        <Button onClick={filterRepos}>Filter repos</Button>
-        <Button onClick={getRepos}>Reset filter</Button>
+        <FilterForm filterByQuery={filterByQuery} />
         <BasicHeading>Sort by Stargazers count</BasicHeading>
         <InputCheckBox
           type="checkbox"
@@ -136,27 +125,9 @@ const RepoList = styled.ul`
   overflow: hidden;
 `;
 
-const Button = styled(BasicButton)`
-  border: solid 0.3rem white;
-  border-radius: 0.3rem;
-  color: #fff;
-  background-color: var(--green);
-`;
-
 const InputGroup = styled.section`
   display: grid;
   grid-auto-flow: row;
-  align-items: center;
-  align-content: space-around;
-  justify-content: center;
-  grid-gap: 2rem;
-  padding: 1rem 0.5rem;
-  background-color: var(--grey);
-`;
-
-const CheckBoxGroup = styled.div`
-  display: grid;
-  grid-auto-flow: column;
   align-items: center;
   align-content: space-around;
   justify-content: center;
