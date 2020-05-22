@@ -9,7 +9,7 @@ const RepoDetail = (props) => {
 
   useEffect(() => {
     if (props.user.user) {
-      props.user.user && props.loadUserRepo([props.user.user.login, repoName]);
+      props.user.user && props.loadSingleRepo({userName: props.user.user.login, repoName});
     } else {
       props.history.push("/");
     }
@@ -23,7 +23,7 @@ const RepoDetail = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  loadUserRepo: (repoIdArray) => dispatch.user.loadUserRepo(repoIdArray),
+  loadSingleRepo: (repoIdArray) => dispatch.user.loadSingleRepo(repoIdArray),
 });
 
 const mapStateToProps = (state) => ({

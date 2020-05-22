@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import Repository from "../components/Repository";
 import FilterForm from "../components/FilterForm";
 import { connect } from "react-redux";
@@ -7,7 +6,6 @@ import { PageLayout, StyledLink, BasicHeading } from "../styles/elements";
 import styled from "styled-components";
 
 const Repositories = (props) => {
-  const [errorMessage, setErrorMessage] = useState("");
   const [reposArray, setReposArray] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -19,6 +17,10 @@ const Repositories = (props) => {
     }
   }, []);
 
+  useEffect(() => {
+    props.user.repositories && setReposArray(props.user.repositories);
+  }, [props.user.repositories]);
+
   const toggleCheckboxChange = (event) => {
     setIsChecked(!isChecked);
     displayRepos();
@@ -29,36 +31,7 @@ const Repositories = (props) => {
   };
 
   const getRepos = async () => {
-    const repoUrl = `${props.user.user.repos_url}`;
-
-    try {
-      const reposDataResponse = await axios.get(repoUrl);
-      const reposData = reposDataResponse.data;
-      const repos = reposData.map(
-        ({
-          name,
-          language,
-          html_url,
-          created_at,
-          description,
-          stargazers_count,
-          ...otherData
-        }) => {
-          return {
-            name,
-            language,
-            html_url,
-            created_at,
-            description,
-            stargazers_count,
-            otherData,
-          };
-        }
-      );
-      setReposArray(repos);
-    } catch (error) {
-      setErrorMessage(error.response.statusText);
-    }
+    props.loadUserRepos(props.user.user.repos_url);
   };
 
   const filterRepos = (queryString) => {
@@ -102,19 +75,20 @@ const Repositories = (props) => {
           ))}
         </RepoList>
       )}
-      {reposArray.length === 0 && <div>{errorMessage}</div>}
-      {reposArray.length === 0 && !errorMessage && (
-        <BasicHeading>No results found</BasicHeading>
-      )}
+      {reposArray.length === 0 && <BasicHeading>No results found</BasicHeading>}
     </PageLayout>
   );
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  loadUserRepos: (allReposUrl) => dispatch.user.loadUserRepos(allReposUrl),
+});
 
 const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps)(Repositories);
+export default connect(mapStateToProps, mapDispatchToProps)(Repositories);
 
 const RepoList = styled.ul`
   display: grid;

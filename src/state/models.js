@@ -13,6 +13,12 @@ export const user = {
         user: responseData,
       };
     },
+    loadAllRepos(state, responseData) {
+      return {
+        ...state,
+        repositories: responseData,
+      };
+    },
     loadRepo(state, responseData) {
       return {
         ...state,
@@ -29,10 +35,18 @@ export const user = {
         console.log(error);
       }
     },
-    async loadUserRepo(repoIdArray) {
+    async loadUserRepos(allReposUrl) {
+      try {
+        const response = await axios.get(allReposUrl);
+        dispatch.user.loadAllRepos(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async loadSingleRepo(repoIdArray) {
       try {
         const response = await axios.get(
-          `${repoUrl}/${repoIdArray[0]}/${repoIdArray[1]}`
+          `${repoUrl}/${repoIdArray.userName}/${repoIdArray.repoName}`
         );
         dispatch.user.loadRepo(response.data);
       } catch (error) {
