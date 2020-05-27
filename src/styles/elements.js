@@ -77,7 +77,6 @@ export const CardContainer = styled.div`
   overflow: hidden;
   background-color: hsla(0, 0%, 70%, 1);
   border-radius: 0.5rem;
-  width: 90%;
 `;
 
 export const TextContainer = styled.div`
@@ -87,7 +86,6 @@ export const TextContainer = styled.div`
   margin: 0;
   padding: 0;
   overflow: hidden;
-  width: 90%;
   border-radius: 0.5rem;
   background-color: hsla(0, 0%, 75%, 1);
 `;

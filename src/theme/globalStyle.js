@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
   --red: hsla(0, 60%, 50%, 1);
   --dark: hsla(220,30%,30%,1);
   --grey: hsla(0,0%,65%,1);
-  font-size: calc(1vw + 1vh + 0.5vmin);
+  font-size: calc(1vw + 1vh + 0.4vmin);
 }
 
 html {
@@ -19,11 +19,17 @@ body {
   background: var(--dark);
   margin: 0;
   padding: 0;
-  font-family: 'Alegreya Sans SC',monospace;
+  font-family: Arial,monospace;
 }
 
 button {
-font-family: 'Alegreya Sans',monospace;}
+font-family: Arial,monospace;}
+
+img {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+}
 
 input {
   color:var(--dark);
@@ -31,6 +37,7 @@ input {
     margin: 0rem;
     border: 0.3rem solid var(--dark);
     border-radius: 0.3rem;
+    font-weight: 700;
 }
 
 input:focus {
