@@ -7,6 +7,7 @@ import {
   TextContainer,
   BasicHeading,
   BasicText,
+  BasicAnchor,
   StyledLink,
 } from "../styles/elements";
 
@@ -31,9 +32,9 @@ const Home = (props) => {
             <BasicText>Name: {userData.name}</BasicText>
             <BasicText>ReposUrl: {userData.url}</BasicText>
             {userData.html_url && (
-              <a href={`${userData.html_url}`}>
+              <BasicAnchor href={`${userData.html_url}`}>
                 <BasicHeading>Open on github</BasicHeading>
-              </a>
+              </BasicAnchor>
             )}
           </TextContainer>
         </CardContainer>

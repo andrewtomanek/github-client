@@ -3,6 +3,7 @@ import {
   TextContainer,
   BasicHeading,
   BasicText,
+  BasicAnchor,
   StyledLink,
 } from "../styles/elements";
 
@@ -35,9 +36,9 @@ const RepoCard = ({
         </>
       )}
       {html_url && (
-        <a href={`${html_url}`}>
+        <BasicAnchor href={`${html_url}`}>
           <BasicHeading>Open on github</BasicHeading>
-        </a>
+        </BasicAnchor>
       )}
       <StyledLink to={`/`}>New search</StyledLink>
     </TextContainer>

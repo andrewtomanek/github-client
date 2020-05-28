@@ -99,7 +99,10 @@ export const BasicHeading = styled.h3`
   border-radius: 0.3rem;
   background-color: var(--blue);
   color: var(--dark);
+`;
 
+export const BasicAnchor = styled.a`
+  text-decoration: none;
 `;
 
 export const BasicText = styled.p`
