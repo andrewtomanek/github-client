@@ -59,14 +59,16 @@ const Repositories = (props) => {
   return (
     <PageLayout>
       <InputGroup>
-        <FilterForm filterByQuery={filterByQuery} />
-        <BasicHeading>Sort by Stargazers count</BasicHeading>
-        <InputCheckBox
-          type="checkbox"
-          value={isChecked}
-          onChange={toggleCheckboxChange}
-        />
         <StyledLink to={`/`}>New search</StyledLink>
+        <FilterForm filterByQuery={filterByQuery} />
+        <CheckBoxContainer>
+          <BasicHeading>Sort by Stargazers count</BasicHeading>
+          <InputCheckBox
+            type="checkbox"
+            value={isChecked}
+            onChange={toggleCheckboxChange}
+          />
+        </CheckBoxContainer>
       </InputGroup>
       {reposArray.length > 0 && (
         <RepoList>
@@ -110,6 +112,17 @@ const InputGroup = styled.section`
   grid-gap: 1rem;
   padding: 1rem 0.5rem;
   background-color: var(--grey);
+`;
+
+const CheckBoxContainer = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.3rem;
+  align-items: center;
+  justify-items: center;
+  padding: 0.5rem;
+  background-color: hsla(0, 0%, 70%, 1);
+  border-radius: 0.5rem;
 `;
 
 const InputCheckBox = styled.input`

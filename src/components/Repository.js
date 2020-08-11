@@ -20,6 +20,9 @@ const Repository = ({
 }) => {
   return (
     <CardContainer>
+      {name && (
+        <StyledLink to={`/detail/${name}`}>Display detail of {name}</StyledLink>
+      )}
       {name && <BasicHeading>{name}</BasicHeading>}
       <TextContainer>
         {language && <BasicText>Language: {language}</BasicText>}
@@ -39,9 +42,6 @@ const Repository = ({
           </>
         )}
       </TextContainer>
-      {name && (
-        <StyledLink to={`/detail/${name}`}>Display detail of {name}</StyledLink>
-      )}
     </CardContainer>
   );
 };

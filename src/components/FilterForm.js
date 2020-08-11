@@ -3,9 +3,8 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import {
   BasicButton,
+  FormContainer,
   InputBox,
-  InputLabel,
-  BasicHeading,
   BasicText,
 } from "../styles/elements";
 import styled from "styled-components";
@@ -40,31 +39,30 @@ const FilterForm = ({ filterByQuery }) => {
           handleReset,
         } = props;
         return (
-          <InputGroup onSubmit={handleSubmit}>
-            <InputLabel htmlFor="name">
-              <BasicHeading>Search GitHub Name</BasicHeading>
-            </InputLabel>
-            <input
-              id="name"
-              placeholder="Filter by name"
-              type="text"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={errors.name && touched.name ? "error" : ""}
-            />
+          <FormContainer>
+            <InputGroup onSubmit={handleSubmit}>
+              <SearchButton type="submit" disabled={isSubmitting}>
+                Filter repos
+              </SearchButton>
+              <input
+                id="name"
+                placeholder="Filter by name"
+                type="text"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.name && touched.name ? "error" : ""}
+              />
+              <ResetButton
+                type="button"
+                onClick={handleReset}
+                disabled={!dirty || isSubmitting}
+              >
+                Reset
+              </ResetButton>
+            </InputGroup>
             <ErrorText> {errors.name ? errors.name : "\u{2714}"}</ErrorText>
-            <SearchButton type="submit" disabled={isSubmitting}>
-              Filter repos
-            </SearchButton>
-            <ResetButton
-              type="button"
-              onClick={handleReset}
-              disabled={!dirty || isSubmitting}
-            >
-              Reset
-            </ResetButton>
-          </InputGroup>
+          </FormContainer>
         );
       }}
     </Formik>
@@ -94,7 +92,6 @@ const ErrorText = styled(BasicText)`
 `;
 
 const InputGroup = styled(InputBox)`
-  background-color: var(--grey);
   justify-items: center;
   min-width: 40vw;
 `;

@@ -4,8 +4,8 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import {
   BasicButton,
+  FormContainer,
   InputBox,
-  InputLabel,
   BasicHeading,
   BasicText,
 } from "../styles/elements";
@@ -41,31 +41,31 @@ const Form = (props) => {
           handleReset,
         } = props;
         return (
-          <InputGroup onSubmit={handleSubmit}>
-            <InputLabel htmlFor="name">
-              <BasicHeading>Search GitHub Name</BasicHeading>
-            </InputLabel>
-            <input
-              id="name"
-              placeholder="Enter username"
-              type="text"
-              value={values.name}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              className={errors.name && touched.name ? "error" : ""}
-            />
+          <FormContainer>
+            <BasicHeading>Search GitHub Name</BasicHeading>
+            <InputGroup onSubmit={handleSubmit}>
+              <SearchButton type="submit" disabled={isSubmitting}>
+                Search
+              </SearchButton>
+              <input
+                id="name"
+                placeholder="Enter username"
+                type="text"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={errors.name && touched.name ? "error" : ""}
+              />
+              <ResetButton
+                type="button"
+                onClick={handleReset}
+                disabled={!dirty || isSubmitting}
+              >
+                Reset
+              </ResetButton>
+            </InputGroup>
             <ErrorText> {errors.name ? errors.name : "\u{2714}"}</ErrorText>
-            <SearchButton type="submit" disabled={isSubmitting}>
-              Search
-            </SearchButton>
-            <ResetButton
-              type="button"
-              onClick={handleReset}
-              disabled={!dirty || isSubmitting}
-            >
-              Reset
-            </ResetButton>
-          </InputGroup>
+          </FormContainer>
         );
       }}
     </Formik>
