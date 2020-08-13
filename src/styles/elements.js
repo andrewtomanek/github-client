@@ -23,6 +23,12 @@ export const BasicButton = styled.button`
   border: 0.3rem solid rgba(27, 31, 35, 0.2);
   border-radius: 0.3rem;
   cursor: pointer;
+  @media all and (max-width: 736px) {
+    font-size: 1.4rem;
+  }
+  @media all and (max-width: 480px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -115,12 +121,18 @@ export const TextContainer = styled.div`
 export const BasicHeading = styled.h3`
   margin: 0;
   padding: 0.1rem 0.3rem;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 800;
   text-align: center;
   border-radius: 0.3rem;
   background-color: var(--blue);
   color: var(--dark);
+  @media all and (max-width: 736px) {
+    font-size: 1.8rem;
+  }
+  @media all and (max-width: 480px) {
+    font-size: 2rem;
+  }
 `;
 
 export const BasicAnchor = styled.a`

@@ -19,7 +19,7 @@ const Home = (props) => {
       {userData && (
         <CardContainer>
           {userData.repos_url && (
-            <StyledLink to="/repos">Display repos</StyledLink>
+            <StyledLink to="/repos">Display all repos</StyledLink>
           )}
           <img src={userData.avatar_url} alt={userData.avatar_url} />
           <TextContainer>

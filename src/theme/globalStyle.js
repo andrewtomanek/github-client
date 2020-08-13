@@ -62,14 +62,14 @@ input[type="checkbox"] {
 }
 
 @media all and (max-width: 736px) {
-    .input {
-        font-size: 1.7rem;
+    input {
+        font-size: 1.5rem;
     }
 }
 
 @media all and (max-width: 480px) {
-    .input {
-        font-size: 2rem;
+    input {
+        font-size: 1.8rem;
     }
 }
 

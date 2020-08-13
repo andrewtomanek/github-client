@@ -34,7 +34,6 @@ const Repository = ({
         )}
         {otherData && (
           <>
-            {" "}
             <BasicText>clone_url: {otherData.clone_url}</BasicText>
             <BasicText>updated: {otherData.updated_at}</BasicText>
             <BasicText>size: {otherData.size}</BasicText>

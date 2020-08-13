@@ -42,7 +42,7 @@ const Form = (props) => {
         } = props;
         return (
           <FormContainer>
-            <BasicHeading>Search GitHub Name</BasicHeading>
+            <BasicHeading>Search GitHub user name</BasicHeading>
             <InputGroup onSubmit={handleSubmit}>
               <SearchButton type="submit" disabled={isSubmitting}>
                 Search
