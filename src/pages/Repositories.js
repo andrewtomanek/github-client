@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Repository from "../components/Repository";
 import FilterForm from "../components/FilterForm";
 import { connect } from "react-redux";
@@ -9,13 +9,17 @@ const Repositories = (props) => {
   const [reposArray, setReposArray] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
 
+  const getRepos = useCallback(async () => {
+    props.loadUserRepos(props.user.user.repos_url);
+  }, [props]);
+
   useEffect(() => {
     if (props.user.user) {
       props.user.user && getRepos();
     } else {
       props.history.push("/");
     }
-  }, []);
+  }, [getRepos, props.history, props.user.user]);
 
   useEffect(() => {
     props.user.repositories && setReposArray(props.user.repositories);
@@ -28,10 +32,6 @@ const Repositories = (props) => {
 
   const filterByQuery = (queryObject) => {
     filterRepos(queryObject.name);
-  };
-
-  const getRepos = async () => {
-    props.loadUserRepos(props.user.user.repos_url);
   };
 
   const filterRepos = (queryString) => {

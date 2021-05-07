@@ -9,11 +9,12 @@ const RepoDetail = (props) => {
 
   useEffect(() => {
     if (props.user.user) {
-      props.user.user && props.loadSingleRepo({userName: props.user.user.login, repoName});
+      props.user.user &&
+        props.loadSingleRepo({ userName: props.user.user.login, repoName });
     } else {
       props.history.push("/");
     }
-  }, []);
+  }, [props, repoName]);
 
   return (
     <PageLayout>

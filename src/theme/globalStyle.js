@@ -37,7 +37,7 @@ input {
     font-size: 1.2rem;
     margin: 0rem;
     padding: 0.3rem 0.6rem;
-    border: 0.3rem solid var(--dark);
+    border: 0.3rem solid transparent;
     border-radius: 0.3rem;
     font-weight: 700;
 }
