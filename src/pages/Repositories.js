@@ -111,7 +111,7 @@ const InputGroup = styled.section`
   justify-content: center;
   grid-gap: 1rem;
   padding: 1rem 0.5rem;
-  background-color: var(--grey);
+  background-color: hsla(0, 0%, 90%, 1);
 `;
 
 const CheckBoxContainer = styled.div`
@@ -121,7 +121,7 @@ const CheckBoxContainer = styled.div`
   align-items: center;
   justify-items: center;
   padding: 0.5rem;
-  background-color: hsla(0, 0%, 70%, 1);
+  background-color: hsla(0, 0%, 90%, 1);
   border-radius: 0.5rem;
 `;
 

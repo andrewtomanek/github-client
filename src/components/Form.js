@@ -79,6 +79,7 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(null, mapDispatchToProps)(Form);
 
 const SearchButton = styled(BasicButton)`
+  font-size: 1.2rem;
   border: solid 0.1rem white;
   border-radius: 0.3rem;
   color: #fff;
@@ -86,6 +87,7 @@ const SearchButton = styled(BasicButton)`
 `;
 
 const ResetButton = styled(BasicButton)`
+  font-size: 1.2rem;
   border: solid 0.1rem white;
   border-radius: 0.3rem;
   color: #fff;
@@ -99,7 +101,6 @@ const ErrorText = styled(BasicText)`
 `;
 
 const InputGroup = styled(InputBox)`
-  background-color: var(--grey);
   justify-items: center;
   min-width: 40vw;
 `;

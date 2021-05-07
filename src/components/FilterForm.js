@@ -72,6 +72,7 @@ const FilterForm = ({ filterByQuery }) => {
 export default FilterForm;
 
 const SearchButton = styled(BasicButton)`
+  font-size: 1.2rem;
   border: solid 0.1rem white;
   border-radius: 0.3rem;
   color: #fff;
@@ -79,6 +80,7 @@ const SearchButton = styled(BasicButton)`
 `;
 
 const ResetButton = styled(BasicButton)`
+  font-size: 1.2rem;
   border: solid 0.1rem white;
   border-radius: 0.3rem;
   color: #fff;

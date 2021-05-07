@@ -91,7 +91,7 @@ export const CardContainer = styled.div`
   margin: 0;
   padding: 1rem;
   overflow: hidden;
-  background-color: hsla(0, 0%, 70%, 1);
+  background-color: hsla(0, 0%, 90%, 1);
   border-radius: 0.5rem;
   width: 90%;
 `;
@@ -102,7 +102,7 @@ export const FormContainer = styled.div`
   align-items: center;
   justify-items: center;
   padding: 0.5rem;
-  background-color: hsla(0, 0%, 70%, 1);
+  background-color: hsla(0, 0%, 90%, 1);
   border-radius: 0.5rem;
 `;
 
@@ -114,7 +114,7 @@ export const TextContainer = styled.div`
   padding: 0;
   overflow: hidden;
   border-radius: 0.5rem;
-  background-color: hsla(0, 0%, 75%, 1);
+  background-color: hsla(0, 0%, 90%, 1);
   width: 90%;
 `;
 
@@ -125,7 +125,6 @@ export const BasicHeading = styled.h3`
   font-weight: 800;
   text-align: center;
   border-radius: 0.3rem;
-  background-color: var(--blue);
   color: var(--dark);
   @media all and (max-width: 736px) {
     font-size: 1.8rem;
