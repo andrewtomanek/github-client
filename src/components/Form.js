@@ -9,7 +9,7 @@ import {
   BasicHeading,
   BasicText,
 } from "../styles/elements";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Form = (props) => {
   return (
@@ -47,14 +47,14 @@ const Form = (props) => {
               <SearchButton type="submit" disabled={isSubmitting}>
                 Search
               </SearchButton>
-              <input
+              <SearchInput
                 id="name"
                 placeholder="Enter username"
                 type="text"
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={errors.name && touched.name ? "error" : ""}
+                inputErrors={errors.name && touched.name}
               />
               <ResetButton
                 type="button"
@@ -78,9 +78,38 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(null, mapDispatchToProps)(Form);
 
+const SearchInput = styled.input`
+  color: var(--dark);
+  font-size: 1.2rem;
+  margin: 0rem;
+  padding: 0.3rem 0.6rem;
+  border: 0.2rem solid transparent;
+  border-radius: 0.3rem;
+  font-weight: 700;
+
+  @media all and (max-width: 736px) {
+    input {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media all and (max-width: 480px) {
+    input {
+      font-size: 1.8rem;
+    }
+  }
+  ${({ inputErrors }) =>
+    inputErrors &&
+    css`
+      color: red;
+      border-color: var(--red);
+      background-color: #ffc9aa;
+    `}
+`;
+
 const SearchButton = styled(BasicButton)`
   font-size: 1.2rem;
-  border: solid 0.1rem white;
+  border: solid 0.2rem white;
   border-radius: 0.3rem;
   color: #fff;
   background-color: var(--green);
@@ -88,7 +117,7 @@ const SearchButton = styled(BasicButton)`
 
 const ResetButton = styled(BasicButton)`
   font-size: 1.2rem;
-  border: solid 0.1rem white;
+  border: solid 0.2rem white;
   border-radius: 0.3rem;
   color: #fff;
   background-color: var(--red);

@@ -32,25 +32,6 @@ img {
     width: 20%;
 }
 
-input {
-    color: var(--dark);
-    font-size: 1.2rem;
-    margin: 0rem;
-    padding: 0.3rem 0.6rem;
-    border: 0.3rem solid transparent;
-    border-radius: 0.3rem;
-    font-weight: 700;
-}
-
-input:focus {
-    border: 0.3rem solid var(--blue);
-    outline: none;
-}
-
-input.error {
-    border-color: var(--red);
-}
-
 input[type="checkbox"] {
     margin: 0;
     padding: 0.1rem 0.3rem;
@@ -59,18 +40,6 @@ input[type="checkbox"] {
     background-color: var(--grey);
     color: var(--green);
     width: 50%;
-}
-
-@media all and (max-width: 736px) {
-    input {
-        font-size: 1.5rem;
-    }
-}
-
-@media all and (max-width: 480px) {
-    input {
-        font-size: 1.8rem;
-    }
 }
 
 `;

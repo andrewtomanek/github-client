@@ -9,9 +9,11 @@ const Repositories = (props) => {
   const [reposArray, setReposArray] = useState([]);
   const [isChecked, setIsChecked] = useState(false);
 
+  const fetchFilteredRepos = props.loadUserRepos;
+
   const getRepos = useCallback(async () => {
-    props.loadUserRepos(props.user.user.repos_url);
-  }, [props]);
+    fetchFilteredRepos(props.user.user.repos_url);
+  }, [fetchFilteredRepos, props.user.user.repos_url]);
 
   useEffect(() => {
     if (props.user.user) {
@@ -112,6 +114,8 @@ const InputGroup = styled.section`
   grid-gap: 1rem;
   padding: 1rem 0.5rem;
   background-color: hsla(0, 0%, 90%, 1);
+  border: 0.2rem solid hsla(0, 0%, 50%, 1);
+  border-radius: 1rem;
 `;
 
 const CheckBoxContainer = styled.div`

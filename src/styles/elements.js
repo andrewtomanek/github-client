@@ -103,6 +103,7 @@ export const FormContainer = styled.div`
   justify-items: center;
   padding: 0.5rem;
   background-color: hsla(0, 0%, 90%, 1);
+  border: 0.2rem solid hsla(0, 0%, 50%, 1);
   border-radius: 0.5rem;
 `;
 
