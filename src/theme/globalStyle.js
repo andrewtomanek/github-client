@@ -39,7 +39,6 @@ input[type="checkbox"] {
     font-weight: 600;
     background-color: var(--grey);
     color: var(--green);
-    width: 50%;
 }
 
 `;

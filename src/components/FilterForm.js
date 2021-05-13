@@ -119,7 +119,6 @@ const ResetButton = styled(BasicButton)`
 const ErrorText = styled(BasicText)`
   text-align: center;
   color: var(--red);
-  height: 100%;
 `;
 
 const InputGroup = styled(InputBox)`

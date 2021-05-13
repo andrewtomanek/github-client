@@ -5,6 +5,7 @@ import {
   BasicText,
   BasicAnchor,
   StyledLink,
+  LinkButton,
 } from "../styles/elements";
 import styled from "styled-components";
 
@@ -40,7 +41,7 @@ const RepoCard = ({
         )}
         {html_url && (
           <BasicAnchor href={`${html_url}`}>
-            <BasicHeading>Open on github</BasicHeading>
+            <LinkButton>Open on github</LinkButton>
           </BasicAnchor>
         )}
       </TextContainer>
@@ -54,8 +55,6 @@ export const DetailContainer = styled.div`
   grid-auto-flow: row;
   grid-gap: 1rem;
   align-items: center;
-  justify-items: center;
+  justify-content: center;
   padding: 0.5rem;
-  background-color: hsla(0, 0%, 70%, 1);
-  border-radius: 0.5rem;
 `;

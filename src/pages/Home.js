@@ -9,6 +9,7 @@ import {
   BasicText,
   BasicAnchor,
   StyledLink,
+  LinkButton,
 } from "../styles/elements";
 
 const Home = (props) => {
@@ -33,7 +34,7 @@ const Home = (props) => {
             <BasicText>ReposUrl: {userData.url}</BasicText>
             {userData.html_url && (
               <BasicAnchor href={`${userData.html_url}`}>
-                <BasicHeading>Open on github</BasicHeading>
+                <LinkButton>Open on github</LinkButton>
               </BasicAnchor>
             )}
           </TextContainer>

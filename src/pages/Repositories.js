@@ -106,15 +106,12 @@ const RepoList = styled.ul`
 `;
 
 const InputGroup = styled.section`
-  display: grid;
-  grid-auto-flow: row;
+  display: flex;
+  flex-flow: column nowrap;
   align-items: center;
-  align-content: space-around;
   justify-content: center;
-  grid-gap: 1rem;
   padding: 1rem 0.5rem;
   background-color: hsla(0, 0%, 90%, 1);
-  border: 0.2rem solid hsla(0, 0%, 50%, 1);
   border-radius: 1rem;
 `;
 
@@ -136,5 +133,4 @@ const InputCheckBox = styled.input`
   font-weight: 600;
   background-color: var(--grey);
   color: var(--green);
-  width: 50%;
 `;

@@ -103,7 +103,6 @@ export const FormContainer = styled.div`
   justify-items: center;
   padding: 0.5rem;
   background-color: hsla(0, 0%, 90%, 1);
-  border: 0.2rem solid hsla(0, 0%, 50%, 1);
   border-radius: 0.5rem;
 `;
 
@@ -111,12 +110,12 @@ export const TextContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
   align-items: center;
-  margin: 0;
-  padding: 0;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.2rem;
   overflow: hidden;
   border-radius: 0.5rem;
   background-color: hsla(0, 0%, 90%, 1);
-  width: 90%;
 `;
 
 export const BasicHeading = styled.h3`
@@ -133,6 +132,11 @@ export const BasicHeading = styled.h3`
   @media all and (max-width: 480px) {
     font-size: 2rem;
   }
+`;
+
+export const LinkButton = styled(BasicHeading)`
+  background-color: var(--green);
+  margin: 0.5rem;
 `;
 
 export const BasicAnchor = styled.a`
